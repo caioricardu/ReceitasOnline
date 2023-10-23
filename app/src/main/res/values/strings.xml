@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">Receitas Da Vida</string>
+
+    <!-- string que estão na activity de login-->
+    <string name="senha">Senha</string>
+    <string name="e_mail">E-mail</string>
+
+    <!-- string parte da tela de cadastro-->
+    <string name="nome">Nome</string>
+    <string name="registrar">Registrar</string>
+    <string name="termos_de_uso">Termos de uso</string>
+</resources>
