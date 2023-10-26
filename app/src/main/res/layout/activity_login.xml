@@ -20,6 +20,7 @@
         app:layout_constraintTop_toBottomOf="@+id/imageView2">
 
         <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/campoEmail"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="@string/e_mail" />
@@ -47,30 +48,43 @@
         app:layout_constraintTop_toBottomOf="@+id/textInputLayout2">
 
         <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/campoSenha"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="@string/senha" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <Button
-        android:id="@+id/button"
+        android:id="@+id/buttonLogin"
         android:layout_width="150dp"
         android:layout_height="50dp"
         android:layout_marginTop="50dp"
         android:backgroundTint="@color/verde_padraoapp"
+        android:onClick="janelaPrincipal"
         android:text="Login"
         android:textSize="16sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView" />
+        app:layout_constraintTop_toBottomOf="@+id/textSemConta" />
 
     <TextView
-        android:id="@+id/textView"
+        android:id="@+id/textSemConta"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
+        android:onClick="janelaCadastro"
         android:text="Ainda não sou cadastrado"
         app:layout_constraintEnd_toEndOf="@+id/textInputLayout"
         app:layout_constraintTop_toBottomOf="@+id/textInputLayout" />
+
+    <ImageView
+        android:id="@+id/imgBiometria"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        android:layout_marginTop="70dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/buttonLogin"
+        app:srcCompat="@drawable/baseline_fingerprint_24" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

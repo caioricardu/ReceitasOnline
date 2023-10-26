@@ -19,16 +19,20 @@
         app:endIconMode="password_toggle">
 
         <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/campoCadastroSenha"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="@string/senha" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <ImageView
-        android:id="@+id/imageView3"
-        android:layout_width="30dp"
-        android:layout_height="25dp"
+        android:contentDescription="@null"
+        android:contextClickable="true"
+        android:id="@+id/imgVoltarLogin"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
         android:layout_marginTop="24dp"
+        android:onClick="voltarLogin"
         android:scaleType="centerCrop"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
@@ -47,6 +51,7 @@
         app:endIconMode="clear_text">
 
         <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/campoCadastroNome"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="@string/nome" />
@@ -65,6 +70,7 @@
         app:endIconMode="clear_text">
 
         <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/campoCadastroEmail"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="@string/e_mail" />
@@ -78,14 +84,14 @@
         android:backgroundTint="#548519"
         android:text="@string/registrar"
         android:textSize="16sp"
-        app:layout_constraintBottom_toTopOf="@+id/textView2"
+        app:layout_constraintBottom_toTopOf="@+id/textTermoDeUso"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textInputLayout8" />
 
     <TextView
-        android:id="@+id/textView2"
+        android:id="@+id/textTermoDeUso"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
