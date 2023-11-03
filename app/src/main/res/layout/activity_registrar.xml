@@ -11,12 +11,12 @@
         android:layout_width="300dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="30dp"
+        app:endIconMode="password_toggle"
         app:layout_constraintBottom_toTopOf="@+id/button2"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textInputLayout7"
-        app:endIconMode="password_toggle">
+        app:layout_constraintTop_toBottomOf="@+id/textInputLayout7">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/campoCadastroSenha"
@@ -26,12 +26,12 @@
     </com.google.android.material.textfield.TextInputLayout>
 
     <ImageView
-        android:contentDescription="@null"
-        android:contextClickable="true"
         android:id="@+id/imgVoltarLogin"
         android:layout_width="48dp"
         android:layout_height="48dp"
         android:layout_marginTop="24dp"
+        android:contentDescription="@null"
+        android:contextClickable="true"
         android:onClick="voltarLogin"
         android:scaleType="centerCrop"
         app:layout_constraintStart_toStartOf="parent"
@@ -42,13 +42,11 @@
         android:id="@+id/textInputLayout6"
         android:layout_width="300dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="50dp"
-        app:layout_constraintBottom_toTopOf="@+id/textInputLayout7"
+        android:layout_marginTop="30dp"
+        app:endIconMode="clear_text"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView4"
-        app:endIconMode="clear_text">
+        app:layout_constraintTop_toBottomOf="@+id/textView4">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/campoCadastroNome"
@@ -62,12 +60,12 @@
         android:layout_width="300dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="30dp"
+        app:endIconMode="clear_text"
         app:layout_constraintBottom_toTopOf="@+id/textInputLayout8"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textInputLayout6"
-        app:endIconMode="clear_text">
+        app:layout_constraintTop_toBottomOf="@+id/textInputLayout6">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/campoCadastroEmail"
@@ -105,13 +103,23 @@
     <ImageView
         android:id="@+id/imageView4"
         android:layout_width="200dp"
-        android:layout_height="wrap_content"
+        android:layout_height="200dp"
         android:scaleType="centerInside"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:srcCompat="@drawable/frango"
+        tools:layout_editor_absoluteY="55dp" />
+
+    <TextView
+        android:id="@+id/textView4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="ReceitasOnline"
+        android:textColor="@color/verde_padraoapp"
+        android:textSize="24sp"
+        android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/textInputLayout6"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_chainStyle="packed"
-        app:srcCompat="@drawable/logo" />
+        app:layout_constraintTop_toBottomOf="@+id/imageView4" />
 </androidx.constraintlayout.widget.ConstraintLayout>
