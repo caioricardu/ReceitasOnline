@@ -5,7 +5,7 @@
 * A ideia inicial do aplicativo é que seja um aplicativo de receitas, que com uma integração de API, seja possível ver receitas Online.
 * Ter uma melhor praticidade em como você enxerga a culinária.
 
-## Atividades realizadas no Figma
+### Atividades realizadas no Figma
 Clique [aqui](https://www.figma.com/file/MOfEUF7rr7JABwTsXJNgbd/Mobile?type=design&mode=design&t=8skMof6Ox1uX4ZyD-1)
 
 
