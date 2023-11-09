@@ -10,23 +10,39 @@ import androidx.fragment.app.FragmentActivity;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
+import android.os.Handler;
 import android.provider.Settings;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.ProgressBar;
+import android.widget.TextView;
 import android.widget.Toast;
 
 
 import com.example.receitasdavida.controller.Notificacao;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.android.material.snackbar.Snackbar;
+import com.google.firebase.auth.AuthResult;
+import com.google.firebase.auth.FirebaseAuth;
 
 import java.util.concurrent.Executor;
 
 
 public class login extends AppCompatActivity {
+
+    //login firebase
+    private EditText edit_email, edit_senha;
+    private Button button_Login;
+    private ProgressBar progressBar;
+    String[] mensagens = {"Preencha todos os campos!","Login realizado com sucesso!"};
+    //
 
     private static final int REQUEST_CODE = 101010; // biométria
     private EditText campoEmail, campoSenha;
@@ -40,6 +56,9 @@ public class login extends AppCompatActivity {
         setContentView(R.layout.activity_login);
 
         inicializar();
+        IniciarComponenetes();
+
+
     }
 
 
@@ -65,7 +84,7 @@ public class login extends AppCompatActivity {
 
             Toast.makeText(this, "Sucesso ao efetuar login", Toast.LENGTH_SHORT).show();
 
-            notificacao.notificacao("Saudação", "Olá Caio, seja bem-vindo ao receitas da vinda");
+            notificacao.notificacao("Saudação", "Olá Caio, seja bem-vindo ao ReceitasOnline");
 
             Intent intent = new Intent(this, principal.class);
             startActivity(intent);
@@ -86,15 +105,15 @@ public class login extends AppCompatActivity {
         switch (controlador.canAuthenticate(BiometricManager.Authenticators.BIOMETRIC_WEAK | BiometricManager.Authenticators.BIOMETRIC_STRONG)) {
 
             case BiometricManager.BIOMETRIC_SUCCESS:
-                Log.d("Poupa+ Biométria", "O usuário pode autenticar com êxito");
+                Log.d("ReceitasOnline Biometria", "O usuário pode autenticar com êxito");
                 break;
 
             case BiometricManager.BIOMETRIC_ERROR_NO_HARDWARE:
-                Log.d("Poupa+ Biométria", "O usuário não pode autenticar porque não há hardware adequado");
+                Log.d("ReceitasOnline Biometria", "O usuário não pode autenticar porque não há hardware adequado");
                 break;
 
             case BiometricManager.BIOMETRIC_ERROR_HW_UNAVAILABLE:
-                Log.d("Poupa+ Biométria", "O usuário não pode autenticar porque o hardware não está disponível");
+                Log.d("ReceitasOnline Biometria", "O usuário não pode autenticar porque o hardware não está disponível");
                 break;
 
             case BiometricManager.BIOMETRIC_ERROR_NONE_ENROLLED:
@@ -108,15 +127,15 @@ public class login extends AppCompatActivity {
                 break;
 
             case BiometricManager.BIOMETRIC_ERROR_SECURITY_UPDATE_REQUIRED:
-                Log.d("Poupa+ Biométria", "O usuário não pode se autenticar porque uma vulnerabilidade de segurança foi descoberta com um ou mais sensores de hardware");
+                Log.d("ReceitasOnline Biometria", "O usuário não pode se autenticar porque uma vulnerabilidade de segurança foi descoberta com um ou mais sensores de hardware");
                 break;
 
             case BiometricManager.BIOMETRIC_ERROR_UNSUPPORTED:
-                Log.d("Poupa+ Biométria", "O usuário não pode autenticar porque as opções especificadas são incompatíveis com a versão atual do Android");
+                Log.d("ReceitasOnline Biometria", "O usuário não pode autenticar porque as opções especificadas são incompatíveis com a versão atual do Android");
                 break;
 
             case BiometricManager.BIOMETRIC_STATUS_UNKNOWN:
-                Log.d("Poupa+ Biométria", "Não é possível determinar se o usuário pode autenticar");
+                Log.d("ReceitasOnline Biometria", "Não é possível determinar se o usuário pode autenticar");
                 break;
 
         }
@@ -175,8 +194,69 @@ public class login extends AppCompatActivity {
         acessar.setOnClickListener(v -> {
             loginPadrao();
         });
+//firebase
+        button_Login.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String email = edit_email.getText().toString();
+                String senha = edit_senha.getText().toString();
 
+                if (email.isEmpty() || senha.isEmpty()) {
+                    Snackbar snackbar = Snackbar.make(v, mensagens[0], Snackbar.LENGTH_SHORT);
+                    snackbar.setBackgroundTint(Color.WHITE);
+                    snackbar.setTextColor(Color.BLACK);
+                    snackbar.show();
+                }else {
+                    AutenticarUsuario(v);
+
+                }
+
+            }
+        });
     }
 
+
+    private void AutenticarUsuario(View view){
+        String email = edit_email.getText().toString();
+        String senha = edit_senha.getText().toString();
+
+        FirebaseAuth.getInstance().signInWithEmailAndPassword(email,senha).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+            @Override
+            public void onComplete(@NonNull Task<AuthResult> task) {
+                if(task.isSuccessful()){
+                    progressBar.setVisibility(View.VISIBLE);
+
+                    new Handler().postDelayed(new Runnable() {
+                        @Override
+                        public void run() {
+                            telaPrincipal();
+                        }
+                    },3000);
+                }else {
+                    String erro;
+
+                    try {
+                        throw task.getException();
+                    }catch (Exception e){
+                        erro = "Erro ao logar usuário";
+                    }
+                    Snackbar snackbar = Snackbar.make(view, erro, Snackbar.LENGTH_SHORT);
+                    snackbar.setBackgroundTint(Color.WHITE);
+                    snackbar.setTextColor(Color.BLACK);
+                    snackbar.show();
+                }
+            }});
+    }
+
+    private void telaPrincipal(){
+        Intent intent = new Intent(login.this, principal.class);
+        startActivity(intent);
+        finish();
+    }
+    private void IniciarComponenetes(){
+        edit_email = findViewById(R.id.campoEmail);
+        edit_senha = findViewById(R.id.campoSenha);
+        button_Login = findViewById(R.id.buttonLogin);
+    }
 
 }

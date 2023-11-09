@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "59451699993",
+    "project_id": "receitasonline-d50af",
+    "storage_bucket": "receitasonline-d50af.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:59451699993:android:f54a929b8aba249cd64b88",
+        "android_client_info": {
+          "package_name": "com.example.receitasdavida"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCcxphFt9niWUDEKKMfPG6SaS4zBbMBROA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

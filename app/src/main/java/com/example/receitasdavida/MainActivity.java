@@ -9,7 +9,7 @@ import android.os.Handler;
 
 public class MainActivity extends AppCompatActivity {
 
-    private final int SPLASH_DELAY = 1000;
+    private final int SPLASH_DELAY = 2000;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
