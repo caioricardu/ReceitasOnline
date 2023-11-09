@@ -2,7 +2,7 @@
 
 
 ## Ideias iniciais do APP
-* A ideia inicial do aplicativo é que seja um aplicativo de receitas, que com uma integração de API, seja possível ver receitas Online.
+* A ideia inicial do aplicativo é que seja um aplicativo de receitas, seja possível ver receitas Online.
 * Ter uma melhor praticidade em como você enxerga a culinária.
 
 ### Atividades realizadas no Figma
